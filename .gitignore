@@ -67,3 +67,6 @@ venv/
 # Mac OS
 *.DS_Store
 *.xcworkspace
+
+# URL to CSV to process.
+csv-url.txt
