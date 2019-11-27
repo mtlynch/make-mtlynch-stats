@@ -26,6 +26,8 @@ def parse(csv_file):
                 _parse_dollars(row['Amazon Affiliate Earnings']),
                 'meal_plan_sales':
                 _parse_dollars(row['Meal Plan Sales']),
+                'total_earnings':
+                _parse_dollars(row['Total Earnings']),
             },)
     return rows
 

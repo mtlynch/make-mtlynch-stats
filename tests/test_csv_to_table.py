@@ -33,6 +33,7 @@ class ConvertTest(unittest.TestCase):
                                  'adsense_earnings': 178.79,
                                  'amazon_affiliate_earnings': 150.06,
                                  'meal_plan_sales': None,
+                                 'total_earnings': 328.85,
                              },
                              {
                                  'month': datetime.date(
@@ -45,5 +46,6 @@ class ConvertTest(unittest.TestCase):
                                  'adsense_earnings': 75.65,
                                  'amazon_affiliate_earnings': 159.02,
                                  'meal_plan_sales': 23.87,
+                                 'total_earnings': 258.54,
                              },
                          ))

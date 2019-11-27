@@ -12,9 +12,9 @@ class ParseCsvTest(unittest.TestCase):
 
     def test_parse(self):
         dummy_file = io.StringIO("""
-Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (Moz),Domain Rating (Ahrefs),AdSense Earnings,Amazon Affiliate Earnings,Meal Plan Sales
-2019-9,"28,768","75,487",10,"2,330",N/A,$178.79,$150.06,N/A
-2019-10,"26,315","66,578",13,"1,574",N/A,$75.65,$159.02,$23.87
+Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (Moz),Domain Rating (Ahrefs),AdSense Earnings,Amazon Affiliate Earnings,Meal Plan Sales,Total Earnings
+2019-9,"28,768","75,487",10,"2,330",N/A,$178.79,$150.06,N/A,$328.85
+2019-10,"26,315","66,578",13,"1,574",N/A,$75.65,$159.02,$23.87,$258.54
 """.strip())
         self.assertEqual([
             {
@@ -27,6 +27,7 @@ Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (M
                 'adsense_earnings': 178.79,
                 'amazon_affiliate_earnings': 150.06,
                 'meal_plan_sales': None,
+                'total_earnings': 328.85,
             },
             {
                 'month': datetime.date(year=2019, month=10, day=1),
@@ -38,5 +39,6 @@ Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (M
                 'adsense_earnings': 75.65,
                 'amazon_affiliate_earnings': 159.02,
                 'meal_plan_sales': 23.87,
+                'total_earnings': 258.54,
             },
         ], parse_csv.parse(dummy_file))
