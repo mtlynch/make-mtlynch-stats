@@ -1,6 +1,6 @@
 # Make mtlynch Stats
 
-[![CircleCI](https://circleci.com/gh/mtlynch/make-mtlynch-stats.svg?style=svg)](https://circleci.com/gh/mtlynch/make-mtlynch-stats) [![Coverage Status](https://coveralls.io/repos/github/mtlynch/make-mtlynch-stats/badge.svg?branch=master)](https://coveralls.io/github/mtlynch/make-mtlynch-stats?branch=master)
+[![CircleCI](https://circleci.com/gh/mtlynch/make-mtlynch-stats.svg?style=svg)](https://circleci.com/gh/mtlynch/make-mtlynch-stats)
 
 ## Overview
 
