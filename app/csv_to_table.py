@@ -11,12 +11,22 @@ def convert(a, b):
         _integer_row('Domain Authority (Moz)', 'domain_authority_moz', a, b))
     rows.append(
         _integer_row('Ranking Keywords (Moz)', 'ranking_keywords_moz', a, b))
-    rows.append(_dollar_amount_row('AdSense Earnings', 'adsense_earnings', a,
-                                   b))
-    rows.append(
-        _dollar_amount_row('Amazon Affiliate Earnings',
-                           'amazon_affiliate_earnings', a, b))
-    rows.append(_dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
+    if a['adsense_earnings'] or b['adsense_earnings']:
+      rows.append(_dollar_amount_row('AdSense Earnings', 'adsense_earnings', a,
+                                    b))
+    # Before AdSense earnings, total earnings == amazon affiliate earnings
+    if a['adsense_earnings'] or b['adsense_earnings']:
+      rows.append(
+          _dollar_amount_row('Amazon Affiliate Earnings',
+                            'amazon_affiliate_earnings', a, b))
+    if a['meal_plan_sales'] or b['meal_plan_sales']:
+      rows.append(_dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
+    a['total_earnings'] = sum(
+        filter(None, (a['adsense_earnings'], a['amazon_affiliate_earnings'],
+                      a['meal_plan_sales'])))
+    b['total_earnings'] = sum(
+        filter(None, (b['adsense_earnings'], b['amazon_affiliate_earnings'],
+                      b['meal_plan_sales'])))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows

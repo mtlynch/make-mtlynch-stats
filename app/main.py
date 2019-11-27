@@ -2,6 +2,9 @@
 
 import argparse
 import logging
+import sys
+
+import csv_to_markdown_table
 
 logger = logging.getLogger(__name__)
 
@@ -20,10 +23,12 @@ def configure_logging():
 def main(args):
     configure_logging()
     logger.info('Started runnning')
+    print(csv_to_markdown_table.convert(sys.stdin, args.offset))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog='Generate mtlynch Stats',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--offset', default=-1, type=int)
     main(parser.parse_args())
