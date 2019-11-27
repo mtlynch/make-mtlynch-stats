@@ -1,8 +1,3 @@
-import locale
-
-locale.setlocale(locale.LC_ALL, '')
-
-
 def convert(a, b):
     rows = []
     rows.append([
@@ -64,7 +59,7 @@ def _format_integer_difference(a, b):
 def _format_integer(i):
     if not i:
         return 'N/A'
-    return "{0:n}".format(i)
+    return '{:,}'.format(i)
 
 
 def _dollar_amount_row(metric_name, key, a, b):
