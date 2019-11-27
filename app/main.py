@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import argparse
 import logging
@@ -24,6 +24,6 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        prog='Python Seed',
+        prog='Generate mtlynch Stats',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     main(parser.parse_args())

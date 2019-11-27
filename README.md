@@ -1,14 +1,24 @@
-# Python3 Seed
+# Make mtlynch Stats
 
-[![CircleCI](https://circleci.com/gh/mtlynch/python3_seed.svg?style=svg)](https://circleci.com/gh/mtlynch/python3_seed) [![Coverage Status](https://coveralls.io/repos/github/mtlynch/python3_seed/badge.svg?branch=master)](https://coveralls.io/github/mtlynch/python3_seed?branch=master)
+[![CircleCI](https://circleci.com/gh/mtlynch/make-mtlynch-stats.svg?style=svg)](https://circleci.com/gh/mtlynch/make-mtlynch-stats) [![Coverage Status](https://coveralls.io/repos/github/mtlynch/make-mtlynch-stats/badge.svg?branch=master)](https://coveralls.io/github/mtlynch/make-mtlynch-stats?branch=master)
 
 ## Overview
 
-A boilerplate Python 3 project set up for unit tests and continuous integration.
+Makes stats for the mtlynch.io blog.
 
-Specifically:
+## Installation
 
-* Enforces Python style rules with [YAPF](https://github.com/google/yapf)
-* Enforces style rules on docstrings using [DocStringChecker](https://chromium.googlesource.com/chromiumos/chromite/+/master/cli/cros/lint.py)
-* Perfoms static analysis with [pyflakes](https://github.com/megies/pyflakes)
-* Sorts imports with [isort](https://github.com/timothycrosley/isort)
+```bash
+mkdir -p ./venv
+virtualenv --python python3 ./venv
+. venv/bin/activate
+pip install --requirement requirements.txt
+pip install --requirement dev_requirements.txt
+```
+
+## Run
+
+```bash
+CSV_URL="your CSV url"
+wget -qO- "$CSV_URL" | ./app/main.py
+```
