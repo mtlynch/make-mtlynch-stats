@@ -22,12 +22,6 @@ def convert(a, b):
     if a['meal_plan_sales'] or b['meal_plan_sales']:
         rows.append(
             _dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
-    a['total_earnings'] = sum(
-        filter(None, (a['adsense_earnings'], a['amazon_affiliate_earnings'],
-                      a['meal_plan_sales'])))
-    b['total_earnings'] = sum(
-        filter(None, (b['adsense_earnings'], b['amazon_affiliate_earnings'],
-                      b['meal_plan_sales'])))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows
