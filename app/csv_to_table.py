@@ -41,7 +41,7 @@ def _integer_row(metric_name, key, a, b):
 
 
 def _format_integer_difference(a, b):
-    if not a or not b:
+    if a is None or b is None:
         return 'N/A'
     difference = b - a
     percentage = 100.0 * (float(difference) / a)
@@ -56,7 +56,7 @@ def _format_integer_difference(a, b):
 
 
 def _format_integer(i):
-    if not i:
+    if i is None:
         return 'N/A'
     return '{:,}'.format(i)
 
@@ -71,7 +71,7 @@ def _dollar_amount_row(metric_name, key, a, b):
 
 
 def _format_dollar_difference(a, b):
-    if not a or not b:
+    if a is None or b is None:
         return 'N/A'
     difference = b - a
     percentage = 100.0 * (difference / a)
@@ -87,6 +87,6 @@ def _format_dollar_difference(a, b):
 
 
 def _format_dollar_amount(d):
-    if not d:
+    if d is None:
         return 'N/A'
     return '$%.2f' % d
