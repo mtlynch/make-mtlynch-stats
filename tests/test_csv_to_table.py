@@ -92,3 +92,46 @@ class ConvertTest(unittest.TestCase):
                     'total_earnings': 0.0,
                 },
             ))
+
+    def test_handles_zeroes_properly_on_left_side(self):
+        self.assertEqual(
+            [
+                ['Metric', 'September 2019', 'October 2019', 'Change'],
+                ['Unique Visitors', '0', '28,768', '+28,768 (+inf%)'],
+                ['Total Pageviews', '0', '75,487', '+75,487 (+inf%)'],
+                ['Domain Authority (Moz)', '0', '10', '+10 (+inf%)'],
+                ['Ranking Keywords (Moz)', '0', '2,330', '+2,330 (+inf%)'],
+                ['AdSense Earnings', '$0.00', '$178.79', '+$178.79 (+inf%)'],
+                [
+                    'Amazon Affiliate Earnings', '$0.00', '$150.06',
+                    '+$150.06 (+inf%)'
+                ],
+                ['Meal Plan Sales', '$0.00', '$5.50', '+$5.50 (+inf%)'],
+                ['Total Earnings', '$0.00', '$334.35', '+$334.35 (+inf%)'],
+            ],
+            csv_to_table.convert(
+                {
+                    'month': datetime.date(year=2019, month=9, day=1),
+                    'unique_visitors': 0,
+                    'total_pageviews': 0,
+                    'domain_authority_moz': 0,
+                    'ranking_keywords_moz': 0,
+                    'domain_rating_ahrefs': None,
+                    'adsense_earnings': 0.0,
+                    'amazon_affiliate_earnings': 0.0,
+                    'meal_plan_sales': 0.0,
+                    'total_earnings': 0.0,
+                },
+                {
+                    'month': datetime.date(year=2019, month=10, day=1),
+                    'unique_visitors': 28768,
+                    'total_pageviews': 75487,
+                    'domain_authority_moz': 10,
+                    'ranking_keywords_moz': 2330,
+                    'domain_rating_ahrefs': None,
+                    'adsense_earnings': 178.79,
+                    'amazon_affiliate_earnings': 150.06,
+                    'meal_plan_sales': 5.50,
+                    'total_earnings': 334.35,
+                },
+            ))

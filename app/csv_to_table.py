@@ -44,15 +44,18 @@ def _format_integer_difference(a, b):
     if a is None or b is None:
         return 'N/A'
     difference = b - a
-    percentage = 100.0 * (float(difference) / a)
+    if difference == 0:
+        return '0'
     if difference > 0:
         sign = '+'
-    elif difference < 0:
-        sign = ''
     else:
-        return '0'
+        sign = ''
+    if a != 0.0:
+        percentage = '%s%.0f%%' % (sign, 100.0 * (float(difference) / a))
+    else:
+        percentage = '+inf%'
     formatted_difference = _format_integer(difference)
-    return '%s%s (%s%.0f%%)' % (sign, formatted_difference, sign, percentage)
+    return '%s%s (%s)' % (sign, formatted_difference, percentage)
 
 
 def _format_integer(i):
@@ -73,17 +76,21 @@ def _dollar_amount_row(metric_name, key, a, b):
 def _format_dollar_difference(a, b):
     if a is None or b is None:
         return 'N/A'
+
     difference = b - a
-    percentage = 100.0 * (difference / a)
+    if difference == 0:
+        return '0'
     if difference > 0:
         sign = '+'
-    elif difference < 0:
-        sign = ''
     else:
-        return '0'
+        sign = ''
     formatted_difference = _format_dollar_amount(difference)
     formatted_difference = formatted_difference.replace('$-', '-$')
-    return '%s%s (%s%.0f%%)' % (sign, formatted_difference, sign, percentage)
+    if a != 0.0:
+        percentage = '%s%.0f%%' % (sign, 100.0 * (float(difference) / a))
+    else:
+        percentage = '+inf%'
+    return '%s%s (%s)' % (sign, formatted_difference, percentage)
 
 
 def _format_dollar_amount(d):
