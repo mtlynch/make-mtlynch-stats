@@ -8,6 +8,8 @@ def convert(a, b):
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
     rows.append(
+        _float_row('Domain Rating (Ahrefs)', 'domain_rating_ahrefs', a, b))
+    rows.append(
         _integer_row('Domain Authority (Moz)', 'domain_authority_moz', a, b))
     rows.append(
         _integer_row('Ranking Keywords (Moz)', 'ranking_keywords_moz', a, b))
@@ -62,6 +64,39 @@ def _format_integer(i):
     if i is None:
         return 'N/A'
     return '{:,}'.format(i)
+
+
+def _float_row(metric_name, key, a, b):
+    return [
+        metric_name,
+        _format_float(a[key]),
+        _format_float(b[key]),
+        _format_float_difference(a[key], b[key])
+    ]
+
+
+def _format_float_difference(a, b):
+    if a is None or b is None:
+        return 'N/A'
+    difference = b - a
+    if difference == 0:
+        return '0'
+    if difference > 0:
+        sign = '+'
+    else:
+        sign = ''
+    if a != 0.0:
+        percentage = '%s%.0f%%' % (sign, 100.0 * (float(difference) / a))
+    else:
+        percentage = '+inf%'
+    formatted_difference = _format_float(difference)
+    return '%s%s (%s)' % (sign, formatted_difference, percentage)
+
+
+def _format_float(f):
+    if f is None:
+        return 'N/A'
+    return '%.1f' % f
 
 
 def _dollar_amount_row(metric_name, key, a, b):
