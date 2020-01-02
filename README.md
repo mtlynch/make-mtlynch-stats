@@ -19,6 +19,6 @@ pip install --requirement dev_requirements.txt
 ## Run
 
 ```bash
-CSV_URL="your CSV url"
+CSV_URL=$(cat csv-url.txt)
 wget -qO- "$CSV_URL" | ./app/main.py
 ```
