@@ -69,4 +69,4 @@ venv/
 *.xcworkspace
 
 # URL to CSV to process.
-csv-url.txt
+*csv-url.txt
