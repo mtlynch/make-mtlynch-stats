@@ -4,6 +4,34 @@ import datetime
 
 def parse(csv_file):
     reader = csv.DictReader(csv_file)
+    if 'RapidAPI Earnings' in reader.fieldnames:
+        return _parse_zestful_csv(reader)
+    else:
+        return _parse_is_it_keto_csv(reader)
+
+
+def _parse_zestful_csv(reader):
+    rows = []
+    for row in reader:
+        rows.append(
+            {
+                'month':
+                _parse_month(row['Month']),
+                'unique_visitors':
+                _parse_integer(row['Unique Visitors']),
+                'total_pageviews':
+                _parse_integer(row['Total Pageviews']),
+                'rapidapi_earnings':
+                _parse_dollars(row['RapidAPI Earnings (after fees)']),
+                'enterprise_plan_earnings':
+                _parse_dollars(row['Enterprise Plan Earnings (after fees)']),
+                'total_earnings':
+                _parse_dollars(row['Total Earnings']),
+            },)
+    return rows
+
+
+def _parse_is_it_keto_csv(reader):
     rows = []
     for row in reader:
         rows.append(
@@ -54,4 +82,4 @@ def _parse_float(value):
 def _parse_dollars(value):
     if not value.startswith('$'):
         return None
-    return float(value[1:])
+    return float(value[1:].replace(',', ''))

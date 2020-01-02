@@ -1,4 +1,11 @@
 def convert(a, b):
+    if 'rapidapi_earnings' in a:
+        return _convert_zestful(a, b)
+    else:
+        return _convert_isitketo(a, b)
+
+
+def _convert_isitketo(a, b):
     rows = []
     rows.append([
         'Metric',
@@ -24,6 +31,28 @@ def convert(a, b):
     if a['meal_plan_sales'] or b['meal_plan_sales']:
         rows.append(
             _dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
+    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+
+    return rows
+
+
+def _convert_zestful(a, b):
+    rows = []
+    rows.append([
+        'Metric',
+        _format_month(a['month']),
+        _format_month(b['month']), 'Change'
+    ])
+    rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
+    rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
+    if a['rapidapi_earnings'] or b['rapidapi_earnings']:
+        rows.append(
+            _dollar_amount_row('RapidAPI Earnings', 'rapidapi_earnings', a, b))
+    # Before AdSense earnings, total earnings == amazon affiliate earnings
+    if a['enterprise_plan_earnings'] or b['enterprise_plan_earnings']:
+        rows.append(
+            _dollar_amount_row('Enterprise Plan Earnings',
+                               'enterprise_plan_earnings', a, b))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows
