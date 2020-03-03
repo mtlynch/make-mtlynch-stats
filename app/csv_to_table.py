@@ -1,8 +1,33 @@
-def convert(a, b):
-    if 'rapidapi_earnings' in a:
-        return _convert_zestful(a, b)
-    else:
-        return _convert_isitketo(a, b)
+import projects
+
+
+def convert(project, a, b):
+    converter_fns = {
+        projects.WANDERJEST: _convert_wanderjest,
+        projects.IS_IT_KETO: _convert_isitketo,
+        projects.ZESTFUL: _convert_zestful,
+    }
+    return converter_fns[project](a, b)
+
+
+def _convert_wanderjest(a, b):
+    rows = []
+    rows.append([
+        'Metric',
+        _format_month(a['month']),
+        _format_month(b['month']), 'Change'
+    ])
+    rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
+    rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
+    rows.append(_integer_row('Registered Users', 'registered_users', a, b))
+    rows.append(
+        _dollar_amount_row('Affiliate Earnings', 'affiliate_earnings', a, b))
+    rows.append(
+        _dollar_amount_row('Scavenger Hunt Earnings', 'scavenger_hunt_earnings',
+                           a, b))
+    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+
+    return rows
 
 
 def _convert_isitketo(a, b):

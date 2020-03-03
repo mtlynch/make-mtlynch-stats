@@ -2,6 +2,7 @@ import datetime
 import unittest
 
 from app import csv_to_table
+from app import projects
 
 
 class ConvertTest(unittest.TestCase):
@@ -23,6 +24,7 @@ class ConvertTest(unittest.TestCase):
             ['Total Earnings', '$328.85', '$258.54', '-$70.31 (-21%)'],
         ],
                          csv_to_table.convert(
+                             projects.IS_IT_KETO,
                              {
                                  'month': datetime.date(
                                      year=2019, month=9, day=1),
@@ -69,6 +71,7 @@ class ConvertTest(unittest.TestCase):
                 ['Total Earnings', '$334.35', '$0.00', '-$334.35 (-100%)'],
             ],
             csv_to_table.convert(
+                projects.IS_IT_KETO,
                 {
                     'month': datetime.date(year=2019, month=9, day=1),
                     'unique_visitors': 28768,
@@ -113,6 +116,7 @@ class ConvertTest(unittest.TestCase):
                 ['Total Earnings', '$0.00', '$334.35', '+$334.35 (+inf%)'],
             ],
             csv_to_table.convert(
+                projects.IS_IT_KETO,
                 {
                     'month': datetime.date(year=2019, month=9, day=1),
                     'unique_visitors': 0,
