@@ -1,13 +1,49 @@
 import csv
 import datetime
 
+import projects
+
 
 def parse(csv_file):
     reader = csv.DictReader(csv_file)
-    if 'RapidAPI Earnings' in reader.fieldnames:
-        return _parse_zestful_csv(reader)
-    else:
-        return _parse_is_it_keto_csv(reader)
+    project = _infer_project(reader.fieldnames)
+    parse_fns = {
+        projects.WANDERJEST: _parse_wanderjest_csv,
+        projects.ZESTFUL: _parse_zestful_csv,
+        projects.IS_IT_KETO: _parse_is_it_keto_csv,
+    }
+    return parse_fns[project](reader), project
+
+
+def _infer_project(field_names):
+    if 'Performers Listed' in field_names:
+        return projects.WANDERJEST
+    elif 'RapidAPI Earnings' in field_names:
+        return projects.ZESTFUL
+    return projects.IS_IT_KETO
+
+
+def _parse_wanderjest_csv(reader):
+    rows = []
+    for row in reader:
+        rows.append(
+            {
+                'month':
+                _parse_month(row['Month']),
+                'unique_visitors':
+                _parse_integer(row['Unique Visitors']),
+                'total_pageviews':
+                _parse_integer(row['Total Pageviews']),
+                'registered_users':
+                _parse_integer(row['Registered Users']),
+                'affiliate_earnings':
+                _parse_dollars(row['Affiliate Earnings']),
+                'scavenger_hunt_earnings':
+                _parse_dollars(row['Scavenger Hunt Earnings']),
+                'total_earnings':
+                _parse_dollars(row['Total Earnings']),
+            },)
+    return rows
 
 
 def _parse_zestful_csv(reader):
