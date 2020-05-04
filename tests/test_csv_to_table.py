@@ -16,8 +16,6 @@ class ConvertTest(unittest.TestCase):
             ['Unique Visitors', '28,768', '26,315', '-2,453 (-9%)'],
             ['Total Pageviews', '75,487', '66,578', '-8,909 (-12%)'],
             ['Domain Rating (Ahrefs)', '4.3', '26.0', '+21.7 (+505%)'],
-            ['Domain Authority (Moz)', '10', '13', '+3 (+30%)'],
-            ['Ranking Keywords (Moz)', '2,330', '1,574', '-756 (-32%)'],
             ['AdSense Earnings', '$178.79', '$75.65', '-$103.14 (-58%)'],
             ['Amazon Affiliate Earnings', '$150.06', '$159.02', '+$8.96 (+6%)'],
             ['Meal Plan Sales', 'N/A', '$23.87', 'N/A'],
@@ -60,8 +58,6 @@ class ConvertTest(unittest.TestCase):
                 ['Unique Visitors', '28,768', '0', '-28,768 (-100%)'],
                 ['Total Pageviews', '75,487', '0', '-75,487 (-100%)'],
                 ['Domain Rating (Ahrefs)', '4.3', '0.0', '-4.3 (-100%)'],
-                ['Domain Authority (Moz)', '10', '0', '-10 (-100%)'],
-                ['Ranking Keywords (Moz)', '2,330', '0', '-2,330 (-100%)'],
                 ['AdSense Earnings', '$178.79', '$0.00', '-$178.79 (-100%)'],
                 [
                     'Amazon Affiliate Earnings', '$150.06', '$0.00',
@@ -105,8 +101,6 @@ class ConvertTest(unittest.TestCase):
                 ['Unique Visitors', '0', '28,768', '+28,768 (+inf%)'],
                 ['Total Pageviews', '0', '75,487', '+75,487 (+inf%)'],
                 ['Domain Rating (Ahrefs)', '0.0', '26.0', '+26.0 (+inf%)'],
-                ['Domain Authority (Moz)', '0', '10', '+10 (+inf%)'],
-                ['Ranking Keywords (Moz)', '0', '2,330', '+2,330 (+inf%)'],
                 ['AdSense Earnings', '$0.00', '$178.79', '+$178.79 (+inf%)'],
                 [
                     'Amazon Affiliate Earnings', '$0.00', '$150.06',
