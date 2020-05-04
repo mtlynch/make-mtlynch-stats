@@ -15,8 +15,6 @@ class MarkdownTableTest(unittest.TestCase):
 | ------------------------- | -------------- | ------------ | ------------------------------------------- |
 | Unique Visitors           | 28,768         | 26,315       | <font color="red">-2,453 (-9%)</font>       |
 | Total Pageviews           | 75,487         | 66,578       | <font color="red">-8,909 (-12%)</font>      |
-| Domain Authority (Moz)    | 10             | 13           | <font color="green">+3 (+33%)</font>        |
-| Ranking Keywords (Moz)    | 2,330          | 1,574        | <font color="red">-756 (-32%)</font>        |
 | AdSense Earnings          | $178.79        | $75.65       | <font color="red">-$103.14 (-58%)</font>    |
 | Amazon Affiliate Earnings | $150.06        | $159.02      | <font color="green">+$8.96 (+6%)</font>     |
 | Meal Plan Sales           | N/A            | $23.87       | N/A                                         |
@@ -26,8 +24,6 @@ class MarkdownTableTest(unittest.TestCase):
                 ['Metric', 'September 2019', 'October 2019', 'Change'],
                 ['Unique Visitors', '28,768', '26,315', '-2,453 (-9%)'],
                 ['Total Pageviews', '75,487', '66,578', '-8,909 (-12%)'],
-                ['Domain Authority (Moz)', '10', '13', '+3 (+33%)'],
-                ['Ranking Keywords (Moz)', '2,330', '1,574', '-756 (-32%)'],
                 ['AdSense Earnings', '$178.79', '$75.65', '-$103.14 (-58%)'],
                 [
                     'Amazon Affiliate Earnings', '$150.06', '$159.02',

@@ -41,10 +41,6 @@ def _convert_isitketo(a, b):
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
     rows.append(
         _float_row('Domain Rating (Ahrefs)', 'domain_rating_ahrefs', a, b))
-    rows.append(
-        _integer_row('Domain Authority (Moz)', 'domain_authority_moz', a, b))
-    rows.append(
-        _integer_row('Ranking Keywords (Moz)', 'ranking_keywords_moz', a, b))
     if a['adsense_earnings'] or b['adsense_earnings']:
         rows.append(
             _dollar_amount_row('AdSense Earnings', 'adsense_earnings', a, b))
