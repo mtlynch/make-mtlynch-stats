@@ -19,7 +19,6 @@ pip install --requirement dev_requirements.txt
 ## Run
 
 ```bash
-CSV_URL_FILE="/path/to/file/with/csv/url"
-CSV_URL=$(cat $CSV_URL_FILE)
-wget -qO- "$CSV_URL" | ./app/main.py
+. venv/bin/activate
+./print-tables
 ```
