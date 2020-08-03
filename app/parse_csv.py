@@ -8,40 +8,36 @@ def parse(csv_file):
     reader = csv.DictReader(csv_file)
     project = _infer_project(reader.fieldnames)
     parse_fns = {
-        projects.WANDERJEST: _parse_wanderjest_csv,
+        projects.TINYPILOT: _parse_tinypilot_csv,
         projects.ZESTFUL: _parse_zestful_csv,
         projects.IS_IT_KETO: _parse_is_it_keto_csv,
+        projects.TOTALS: _parse_totals_csv,
     }
     return parse_fns[project](reader), project
 
 
 def _infer_project(field_names):
-    if 'Performers Listed' in field_names:
-        return projects.WANDERJEST
+    if 'Total Sales' in field_names:
+        return projects.TINYPILOT
     elif 'RapidAPI Earnings' in field_names:
         return projects.ZESTFUL
-    return projects.IS_IT_KETO
+    elif 'Meal Plan Sales' in field_names:
+        return projects.IS_IT_KETO
+    elif 'TinyPilot' in field_names:
+        return projects.TOTALS
+    raise ValueError('could not infer project')
 
 
-def _parse_wanderjest_csv(reader):
+def _parse_tinypilot_csv(reader):
     rows = []
     for row in reader:
         rows.append(
             {
-                'month':
-                _parse_month(row['Month']),
-                'unique_visitors':
-                _parse_integer(row['Unique Visitors']),
-                'total_pageviews':
-                _parse_integer(row['Total Pageviews']),
-                'registered_users':
-                _parse_integer(row['Registered Users']),
-                'affiliate_earnings':
-                _parse_dollars(row['Affiliate Earnings']),
-                'scavenger_hunt_earnings':
-                _parse_dollars(row['Scavenger Hunt Earnings']),
-                'total_earnings':
-                _parse_dollars(row['Total Earnings']),
+                'month': _parse_month(row['Month']),
+                'unique_visitors': _parse_integer(row['Unique Visitors']),
+                'total_pageviews': _parse_integer(row['Total Pageviews']),
+                'total_earnings': _parse_dollars(
+                    row['Net Earnings from Sales']),
             },)
     return rows
 
@@ -62,7 +58,7 @@ def _parse_zestful_csv(reader):
                 'enterprise_plan_earnings':
                 _parse_dollars(row['Enterprise Plan Earnings (after fees)']),
                 'total_earnings':
-                _parse_dollars(row['Total Earnings']),
+                _parse_dollars(row['Total Earnings (after fees)']),
             },)
     return rows
 
@@ -92,6 +88,20 @@ def _parse_is_it_keto_csv(reader):
                 _parse_dollars(row['Meal Plan Sales']),
                 'total_earnings':
                 _parse_dollars(row['Total Earnings']),
+            },)
+    return rows
+
+
+def _parse_totals_csv(reader):
+    rows = []
+    for row in reader:
+        rows.append(
+            {
+                'month': _parse_month(row['Month']),
+                'tinypilot': _parse_dollars(row['TinyPilot']),
+                'isitketo': _parse_dollars(row['Is It Keto']),
+                'zestful': _parse_dollars(row['Zestful']),
+                'total': _parse_dollars(row['Total']),
             },)
     return rows
 

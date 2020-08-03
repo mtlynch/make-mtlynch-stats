@@ -48,9 +48,9 @@ Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (M
 
     def test_parse_zestful_csv(self):
         dummy_file = io.StringIO("""
-Month,Unique Visitors,Total Pageviews,RapidAPI Earnings,Enterprise Plan Earnings,Total Earnings,RapidAPI Earnings (after fees),Enterprise Plan Earnings (after fees)
-2019-11,232,320,$81.66,$0.00,$65.33,$65.33,$0.00
-2019-12,207,594,$65.30,"$4,000.00","$3,935.94",$52.24,"$3,883.70"
+Month,Unique Visitors,Total Pageviews,RapidAPI Earnings,Enterprise Plan Earnings,Total Earnings,RapidAPI Earnings (after fees),Enterprise Plan Earnings (after fees),Total Earnings (after fees)
+2019-11,232,320,$81.66,$0.00,$65.33,$65.33,$0.00,$65.33
+2019-12,207,594,$65.30,"$4,000.00","$3,935.94",$52.24,"$3,883.70","$3,935.95"
 """.strip())
         parsed_actual, project_actual = parse_csv.parse(dummy_file)
         self.assertEqual([
@@ -68,7 +68,7 @@ Month,Unique Visitors,Total Pageviews,RapidAPI Earnings,Enterprise Plan Earnings
                 'total_pageviews': 594,
                 'rapidapi_earnings': 52.24,
                 'enterprise_plan_earnings': 3883.7,
-                'total_earnings': 3935.94,
+                'total_earnings': 3935.95,
             },
         ], parsed_actual)
         self.assertEqual(projects.ZESTFUL, project_actual)

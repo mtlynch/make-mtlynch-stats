@@ -3,10 +3,10 @@
 set -u
 set -e
 
-for project in "isitketo" "zestful"
+for project in "tinypilot" "isitketo" "zestful" "totals"
 do
   CSV_URL_FILE="${project}-csv-url.txt"
   CSV_URL=$(cat $CSV_URL_FILE)
-  echo "Table for ${project}"
-  wget -qO- "$CSV_URL" | ./app/main.py 2> /dev/null
+  echo "### ${project}"
+  wget -qO- "$CSV_URL" | ./app/main.py 2> /tmp/print-table-output
 done

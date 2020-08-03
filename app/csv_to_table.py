@@ -3,14 +3,15 @@ import projects
 
 def convert(project, a, b):
     converter_fns = {
-        projects.WANDERJEST: _convert_wanderjest,
+        projects.TINYPILOT: _convert_tinypilot,
         projects.IS_IT_KETO: _convert_isitketo,
         projects.ZESTFUL: _convert_zestful,
+        projects.TOTALS: _convert_totals,
     }
     return converter_fns[project](a, b)
 
 
-def _convert_wanderjest(a, b):
+def _convert_tinypilot(a, b):
     rows = []
     rows.append([
         'Metric',
@@ -19,12 +20,6 @@ def _convert_wanderjest(a, b):
     ])
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
-    rows.append(_integer_row('Registered Users', 'registered_users', a, b))
-    rows.append(
-        _dollar_amount_row('Affiliate Earnings', 'affiliate_earnings', a, b))
-    rows.append(
-        _dollar_amount_row('Scavenger Hunt Earnings', 'scavenger_hunt_earnings',
-                           a, b))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows
@@ -75,6 +70,21 @@ def _convert_zestful(a, b):
             _dollar_amount_row('Enterprise Plan Earnings',
                                'enterprise_plan_earnings', a, b))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+
+    return rows
+
+
+def _convert_totals(a, b):
+    rows = []
+    rows.append([
+        'Metric',
+        _format_month(a['month']),
+        _format_month(b['month']), 'Change'
+    ])
+    rows.append(_dollar_amount_row('TinyPilot', 'tinypilot', a, b))
+    rows.append(_dollar_amount_row('Is It Keto', 'isitketo', a, b))
+    rows.append(_dollar_amount_row('Zestful', 'zestful', a, b))
+    rows.append(_dollar_amount_row('Total', 'total', a, b))
 
     return rows
 
@@ -181,4 +191,4 @@ def _format_dollar_difference(a, b):
 def _format_dollar_amount(d):
     if d is None:
         return 'N/A'
-    return '$%.2f' % d
+    return f'${d:,.2f}'
