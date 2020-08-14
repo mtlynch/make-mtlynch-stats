@@ -84,6 +84,8 @@ def _parse_is_it_keto_csv(reader):
                 _parse_dollars(row['AdSense Earnings']),
                 'amazon_affiliate_earnings':
                 _parse_dollars(row['Amazon Affiliate Earnings']),
+                'other_affiliate_earnings':
+                _parse_dollars(row['Kiss My Keto Affiliate Earnings']),
                 'meal_plan_sales':
                 _parse_dollars(row['Meal Plan Sales']),
                 'total_earnings':

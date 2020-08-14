@@ -44,6 +44,10 @@ def _convert_isitketo(a, b):
         rows.append(
             _dollar_amount_row('Amazon Affiliate Earnings',
                                'amazon_affiliate_earnings', a, b))
+    if a['other_affiliate_earnings'] or b['other_affiliate_earnings']:
+        rows.append(
+            _dollar_amount_row('Other Affiliate Earnings',
+                               'other_affiliate_earnings', a, b))
     if a['meal_plan_sales'] or b['meal_plan_sales']:
         rows.append(
             _dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
