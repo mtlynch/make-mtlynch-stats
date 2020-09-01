@@ -20,6 +20,8 @@ def _convert_tinypilot(a, b):
     ])
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
+    rows.append(_dollar_amount_row('Sales Revenue', 'net_sales', a, b))
+    rows.append(_dollar_amount_row('Donations', 'donations', a, b))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows
@@ -39,6 +41,9 @@ def _convert_isitketo(a, b):
     if a['adsense_earnings'] or b['adsense_earnings']:
         rows.append(
             _dollar_amount_row('AdSense Earnings', 'adsense_earnings', a, b))
+    if a['adthrive_earnings'] or b['adthrive_earnings']:
+        rows.append(
+            _dollar_amount_row('AdThrive Earnings', 'adthrive_earnings', a, b))
     # Before AdSense earnings, total earnings == amazon affiliate earnings
     if a['adsense_earnings'] or b['adsense_earnings']:
         rows.append(

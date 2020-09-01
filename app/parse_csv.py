@@ -36,8 +36,10 @@ def _parse_tinypilot_csv(reader):
                 'month': _parse_month(row['Month']),
                 'unique_visitors': _parse_integer(row['Unique Visitors']),
                 'total_pageviews': _parse_integer(row['Total Pageviews']),
+                'net_sales': _parse_dollars(row['Net Sales']),
+                'donations': _parse_dollars(row['Donations']),
                 'total_earnings': _parse_dollars(
-                    row['Net Earnings from Sales']),
+                    row['Total Earnings']),
             },)
     return rows
 
@@ -82,6 +84,8 @@ def _parse_is_it_keto_csv(reader):
                 _parse_float(row['Domain Rating (Ahrefs)']),
                 'adsense_earnings':
                 _parse_dollars(row['AdSense Earnings']),
+                'adthrive_earnings':
+                _parse_dollars(row['AdThrive Earnings']),
                 'amazon_affiliate_earnings':
                 _parse_dollars(row['Amazon Affiliate Earnings']),
                 'other_affiliate_earnings':
