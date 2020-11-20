@@ -3,10 +3,14 @@
 set -u
 set -e
 
-for project in "tinypilot" "isitketo" "zestful" "totals"
+for project in "tinypilot" "isitketo" "zestful"
 do
   CSV_URL_FILE="${project}-csv-url.txt"
   CSV_URL=$(cat $CSV_URL_FILE)
   echo "### ${project}"
   wget -qO- "$CSV_URL" | ./app/main.py 2> /tmp/print-table-output
 done
+
+CSV_URL_FILE="totals-csv-url.txt"
+CSV_URL=$(cat $CSV_URL_FILE)
+wget -qO- "$CSV_URL" | ./app/main.py --to-json > ../mtlynch.io/static/data/project-revenue.json
