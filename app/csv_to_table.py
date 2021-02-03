@@ -5,6 +5,7 @@ def convert(project, a, b):
     converter_fns = {
         projects.TINYPILOT: _convert_tinypilot,
         projects.IS_IT_KETO: _convert_isitketo,
+        projects.HIT_THE_FRONT_PAGE: _convert_htfp,
         projects.ZESTFUL: _convert_zestful,
         projects.TOTALS: _convert_totals,
     }
@@ -26,6 +27,17 @@ def _convert_tinypilot(a, b):
 
     return rows
 
+def _convert_htfp(a, b):
+    rows = []
+    rows.append([
+        'Metric',
+        _format_month(a['month']),
+        _format_month(b['month']), 'Change'
+    ])
+    rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
+    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+
+    return rows
 
 def _convert_isitketo(a, b):
     rows = []

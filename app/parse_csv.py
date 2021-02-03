@@ -11,6 +11,7 @@ def parse(csv_file):
         projects.TINYPILOT: _parse_tinypilot_csv,
         projects.ZESTFUL: _parse_zestful_csv,
         projects.IS_IT_KETO: _parse_is_it_keto_csv,
+        projects.HIT_THE_FRONT_PAGE: _parse_htfp_csv,
         projects.TOTALS: _parse_totals_csv,
     }
     return parse_fns[project](reader), project
@@ -21,6 +22,8 @@ def _infer_project(field_names):
         return projects.TINYPILOT
     elif 'RapidAPI Earnings' in field_names:
         return projects.ZESTFUL
+    elif 'Gumroad Earnings' in field_names:
+        return projects.HIT_THE_FRONT_PAGE
     elif 'Meal Plan Sales' in field_names:
         return projects.IS_IT_KETO
     elif 'TinyPilot' in field_names:
@@ -43,6 +46,18 @@ def _parse_tinypilot_csv(reader):
             },)
     return rows
 
+
+def _parse_htfp_csv(reader):
+    rows = []
+    for row in reader:
+        rows.append(
+            {
+                'month': _parse_month(row['Month']),
+                'unique_visitors': _parse_integer(row['Unique Visitors']),
+                'total_earnings': _parse_dollars(
+                    row['Total Earnings']),
+            },)
+    return rows
 
 def _parse_zestful_csv(reader):
     rows = []
@@ -105,6 +120,7 @@ def _parse_totals_csv(reader):
             {
                 'month': _parse_month(row['Month']),
                 'tinypilot': _parse_dollars(row['TinyPilot']),
+                'htfp': _parse_dollars(row['Hit the Front Page']),
                 'isitketo': _parse_dollars(row['Is It Keto']),
                 'zestful': _parse_dollars(row['Zestful']),
                 'total': _parse_dollars(row['Total']),

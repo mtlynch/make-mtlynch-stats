@@ -1,4 +1,5 @@
 TINYPILOT = 'tinypilot'
 IS_IT_KETO = 'is-it-keto'
 ZESTFUL = 'zestful'
+HIT_THE_FRONT_PAGE = 'hit-the-front-page'
 TOTALS = 'totals'
