@@ -54,6 +54,8 @@ def _parse_htfp_csv(reader):
             {
                 'month': _parse_month(row['Month']),
                 'unique_visitors': _parse_integer(row['Unique Visitors']),
+                'gumroad_earnings': _parse_dollars(row['Gumroad Earnings']),
+                'bfd_earnings': _parse_dollars(row['Blogging for Devs Earnings']),
                 'total_earnings': _parse_dollars(
                     row['Total Earnings']),
             },)

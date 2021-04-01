@@ -35,6 +35,8 @@ def _convert_htfp(a, b):
         _format_month(b['month']), 'Change'
     ])
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
+    rows.append(_dollar_amount_row('Gumroad Earnings', 'gumroad_earnings', a, b))
+    rows.append(_dollar_amount_row('Blogging for Devs Earnings', 'bfd_earnings', a, b))
     rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
 
     return rows
