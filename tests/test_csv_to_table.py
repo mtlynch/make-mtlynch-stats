@@ -34,7 +34,7 @@ class ConvertTest(unittest.TestCase):
                                  'adsense_earnings': 178.79,
                                  'amazon_affiliate_earnings': 150.06,
                                  'meal_plan_sales': None,
-                                 'total_earnings': 328.85,
+                                 'total_revenue': 328.85,
                              },
                              {
                                  'month': datetime.date(
@@ -47,7 +47,7 @@ class ConvertTest(unittest.TestCase):
                                  'adsense_earnings': 75.65,
                                  'amazon_affiliate_earnings': 159.02,
                                  'meal_plan_sales': 23.87,
-                                 'total_earnings': 258.54,
+                                 'total_revenue': 258.54,
                              },
                          ))
 
@@ -78,7 +78,7 @@ class ConvertTest(unittest.TestCase):
                     'adsense_earnings': 178.79,
                     'amazon_affiliate_earnings': 150.06,
                     'meal_plan_sales': 5.50,
-                    'total_earnings': 334.35,
+                    'total_revenue': 334.35,
                 },
                 {
                     'month': datetime.date(year=2019, month=10, day=1),
@@ -90,7 +90,7 @@ class ConvertTest(unittest.TestCase):
                     'adsense_earnings': 0.0,
                     'amazon_affiliate_earnings': 0.0,
                     'meal_plan_sales': 0.0,
-                    'total_earnings': 0.0,
+                    'total_revenue': 0.0,
                 },
             ))
 
@@ -121,7 +121,7 @@ class ConvertTest(unittest.TestCase):
                     'adsense_earnings': 0.0,
                     'amazon_affiliate_earnings': 0.0,
                     'meal_plan_sales': 0.0,
-                    'total_earnings': 0.0,
+                    'total_revenue': 0.0,
                 },
                 {
                     'month': datetime.date(year=2019, month=10, day=1),
@@ -133,6 +133,6 @@ class ConvertTest(unittest.TestCase):
                     'adsense_earnings': 178.79,
                     'amazon_affiliate_earnings': 150.06,
                     'meal_plan_sales': 5.50,
-                    'total_earnings': 334.35,
+                    'total_revenue': 334.35,
                 },
             ))

@@ -23,7 +23,8 @@ def _convert_tinypilot(a, b):
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
     rows.append(_dollar_amount_row('Sales Revenue', 'net_sales', a, b))
     rows.append(_dollar_amount_row('Donations', 'donations', a, b))
-    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+    rows.append(_dollar_amount_row('Total Revenue', 'total_revenue', a, b))
+    rows.append(_dollar_amount_row('Total Profit', 'total_profit', a, b))
 
     return rows
 
@@ -35,9 +36,9 @@ def _convert_htfp(a, b):
         _format_month(b['month']), 'Change'
     ])
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
-    rows.append(_dollar_amount_row('Gumroad Earnings', 'gumroad_earnings', a, b))
-    rows.append(_dollar_amount_row('Blogging for Devs Earnings', 'bfd_earnings', a, b))
-    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+    rows.append(_dollar_amount_row('Gumroad Revenue', 'gumroad_earnings', a, b))
+    rows.append(_dollar_amount_row('Blogging for Devs Revenue', 'bfd_earnings', a, b))
+    rows.append(_dollar_amount_row('Total Revenue', 'total_revenue', a, b))
 
     return rows
 
@@ -54,23 +55,23 @@ def _convert_isitketo(a, b):
         _float_row('Domain Rating (Ahrefs)', 'domain_rating_ahrefs', a, b))
     if a['adsense_earnings'] or b['adsense_earnings']:
         rows.append(
-            _dollar_amount_row('AdSense Earnings', 'adsense_earnings', a, b))
+            _dollar_amount_row('AdSense Revenue', 'adsense_earnings', a, b))
     if a['adthrive_earnings'] or b['adthrive_earnings']:
         rows.append(
-            _dollar_amount_row('AdThrive Earnings', 'adthrive_earnings', a, b))
+            _dollar_amount_row('AdThrive Revenue', 'adthrive_earnings', a, b))
     # Before AdSense earnings, total earnings == amazon affiliate earnings
     if a['adsense_earnings'] or b['adsense_earnings']:
         rows.append(
-            _dollar_amount_row('Amazon Affiliate Earnings',
+            _dollar_amount_row('Amazon Affiliate Revenue',
                                'amazon_affiliate_earnings', a, b))
     if a['other_affiliate_earnings'] or b['other_affiliate_earnings']:
         rows.append(
-            _dollar_amount_row('Other Affiliate Earnings',
+            _dollar_amount_row('Other Affiliate Revenue',
                                'other_affiliate_earnings', a, b))
     if a['meal_plan_sales'] or b['meal_plan_sales']:
         rows.append(
             _dollar_amount_row('Meal Plan Sales', 'meal_plan_sales', a, b))
-    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+    rows.append(_dollar_amount_row('Total Revenue', 'total_revenue', a, b))
 
     return rows
 
@@ -86,13 +87,13 @@ def _convert_zestful(a, b):
     rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
     if a['rapidapi_earnings'] or b['rapidapi_earnings']:
         rows.append(
-            _dollar_amount_row('RapidAPI Earnings', 'rapidapi_earnings', a, b))
+            _dollar_amount_row('RapidAPI Revenue', 'rapidapi_earnings', a, b))
     # Before AdSense earnings, total earnings == amazon affiliate earnings
     if a['enterprise_plan_earnings'] or b['enterprise_plan_earnings']:
         rows.append(
-            _dollar_amount_row('Enterprise Plan Earnings',
+            _dollar_amount_row('Enterprise Plan Revenue',
                                'enterprise_plan_earnings', a, b))
-    rows.append(_dollar_amount_row('Total Earnings', 'total_earnings', a, b))
+    rows.append(_dollar_amount_row('Total Revenue', 'total_revenue', a, b))
 
     return rows
 

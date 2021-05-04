@@ -13,6 +13,6 @@ done
 
 CSV_URL_FILE="totals-csv-url.txt"
 CSV_URL=$(cat $CSV_URL_FILE)
-REVENUE_JSON="../mtlynch.io/static/data/project-revenue.json"
+readonly REVENUE_JSON="../mtlynch.io/static/data/project-revenue.json"
 echo "Saving updated revenue to ${REVENUE_JSON}"
 wget -qO- "$CSV_URL" | ./app/main.py --to-json > "${REVENUE_JSON}"

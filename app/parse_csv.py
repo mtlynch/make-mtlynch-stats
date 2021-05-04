@@ -41,8 +41,10 @@ def _parse_tinypilot_csv(reader):
                 'total_pageviews': _parse_integer(row['Total Pageviews']),
                 'net_sales': _parse_dollars(row['Net Sales']),
                 'donations': _parse_dollars(row['Donations']),
-                'total_earnings': _parse_dollars(
+                'total_revenue': _parse_dollars(
                     row['Total Earnings']),
+                'total_profit': _parse_dollars(
+                    row['Total Profit']),
             },)
     return rows
 
@@ -56,7 +58,7 @@ def _parse_htfp_csv(reader):
                 'unique_visitors': _parse_integer(row['Unique Visitors']),
                 'gumroad_earnings': _parse_dollars(row['Gumroad Earnings']),
                 'bfd_earnings': _parse_dollars(row['Blogging for Devs Earnings']),
-                'total_earnings': _parse_dollars(
+                'total_revenue': _parse_dollars(
                     row['Total Earnings']),
             },)
     return rows
@@ -76,7 +78,7 @@ def _parse_zestful_csv(reader):
                 _parse_dollars(row['RapidAPI Earnings (after fees)']),
                 'enterprise_plan_earnings':
                 _parse_dollars(row['Enterprise Plan Earnings (after fees)']),
-                'total_earnings':
+                'total_revenue':
                 _parse_dollars(row['Total Earnings (after fees)']),
             },)
     return rows
@@ -109,7 +111,7 @@ def _parse_is_it_keto_csv(reader):
                 _parse_dollars(row['Kiss My Keto Affiliate Earnings']),
                 'meal_plan_sales':
                 _parse_dollars(row['Meal Plan Sales']),
-                'total_earnings':
+                'total_revenue':
                 _parse_dollars(row['Total Earnings']),
             },)
     return rows

@@ -29,7 +29,7 @@ Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (M
                 'adsense_earnings': 178.79,
                 'amazon_affiliate_earnings': 150.06,
                 'meal_plan_sales': None,
-                'total_earnings': 328.85,
+                'total_revenue': 328.85,
             },
             {
                 'month': datetime.date(year=2019, month=10, day=1),
@@ -41,7 +41,7 @@ Month,Unique Visitors,Total Pageviews,Domain Authority (Moz),Ranking Keywords (M
                 'adsense_earnings': 75.65,
                 'amazon_affiliate_earnings': 159.02,
                 'meal_plan_sales': 23.87,
-                'total_earnings': 258.54,
+                'total_revenue': 258.54,
             },
         ], parsed_actual)
         self.assertEqual(projects.IS_IT_KETO, project_actual)
@@ -60,7 +60,7 @@ Month,Unique Visitors,Total Pageviews,RapidAPI Earnings,Enterprise Plan Earnings
                 'total_pageviews': 320,
                 'rapidapi_earnings': 65.33,
                 'enterprise_plan_earnings': 0.0,
-                'total_earnings': 65.33,
+                'total_revenue': 65.33,
             },
             {
                 'month': datetime.date(year=2019, month=12, day=1),
@@ -68,7 +68,7 @@ Month,Unique Visitors,Total Pageviews,RapidAPI Earnings,Enterprise Plan Earnings
                 'total_pageviews': 594,
                 'rapidapi_earnings': 52.24,
                 'enterprise_plan_earnings': 3883.7,
-                'total_earnings': 3935.95,
+                'total_revenue': 3935.95,
             },
         ], parsed_actual)
         self.assertEqual(projects.ZESTFUL, project_actual)
