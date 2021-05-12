@@ -43,8 +43,8 @@ def _parse_tinypilot_csv(reader):
                 'donations': _parse_dollars(row['Donations']),
                 'total_revenue': _parse_dollars(
                     row['Total Earnings']),
-                'total_profit': _parse_dollars(
-                    row['Total Profit']),
+                'profit': _parse_dollars(
+                    row['Profit']),
             },)
     return rows
 
