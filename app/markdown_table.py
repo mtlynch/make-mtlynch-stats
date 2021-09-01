@@ -55,13 +55,6 @@ def _add_padding(table, column_widths):
         rows.append(row)
     return rows
 
-    rows = table[:-1]
-    final_row = []
-    for value in table[-1]:
-        final_row.append('**%s**' % value)
-    rows.append(final_row)
-    return rows
-
 
 def _find_column_widths(table):
     column_count = len(table[0])
