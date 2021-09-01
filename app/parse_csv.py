@@ -152,6 +152,6 @@ def _parse_float(value):
 
 
 def _parse_dollars(value):
-    if not value.startswith('$'):
+    if not value.startswith('$') and not value.startswith('-$'):
         return None
-    return float(value[1:].replace(',', ''))
+    return float(value.replace('$', '').replace(',', ''))
