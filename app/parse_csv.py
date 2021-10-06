@@ -41,6 +41,8 @@ def _parse_tinypilot_csv(reader):
                 'total_pageviews': _parse_integer(row['Total Pageviews']),
                 'net_sales': _parse_dollars(row['Net Sales']),
                 'donations': _parse_dollars(row['Donations']),
+                'royalties': _parse_dollars(row['Royalties']),
+                'enterprise_subscriptions': _parse_dollars(row['Enterprise Subscriptions']),
                 'total_revenue': _parse_dollars(
                     row['Total Earnings']),
                 'profit': _parse_dollars(

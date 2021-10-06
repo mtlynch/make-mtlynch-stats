@@ -24,6 +24,8 @@ def _convert_tinypilot(a, b):
     rows.append(_dollar_amount_row('Sales Revenue', 'net_sales', a, b))
     if a['donations'] or b['donations']:
         rows.append(_dollar_amount_row('Donations', 'donations', a, b))
+    rows.append(_dollar_amount_row('Enterprise Subscriptions', 'enterprise_subscriptions', a, b))
+    rows.append(_dollar_amount_row('Royalties', 'royalties', a, b))
     rows.append(_dollar_amount_row('Total Revenue', 'total_revenue', a, b))
     rows.append(_dollar_amount_row('Profit', 'profit', a, b))
 
