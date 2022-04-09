@@ -1,8 +1,6 @@
 import collections
 import json
 
-import csv_to_table
-import markdown_table
 import parse_csv
 
 
@@ -17,4 +15,4 @@ def convert(csv_file):
         if v is None:
           continue
         projects[k][month.isoformat()[:7]] = v
-    return json.dumps(projects, sort_keys=True, indent=4)
+    return json.dumps(projects, sort_keys=True, indent=2)
