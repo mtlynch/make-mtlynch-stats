@@ -36,17 +36,24 @@ def _parse_tinypilot_csv(reader):
     for row in reader:
         rows.append(
             {
-                'month': _parse_month(row['Month']),
-                'unique_visitors': _parse_integer(row['Unique Visitors']),
-                'total_pageviews': _parse_integer(row['Total Pageviews']),
-                'net_sales': _parse_dollars(row['Net Sales']),
-                'donations': _parse_dollars(row['Donations']),
-                'royalties': _parse_dollars(row['Royalties']),
-                'enterprise_subscriptions': _parse_dollars(row['Enterprise Subscriptions']),
-                'total_revenue': _parse_dollars(
-                    row['Total Earnings']),
-                'profit': _parse_dollars(
-                    row['Profit']),
+                'month':
+                _parse_month(row['Month']),
+                'unique_visitors':
+                _parse_integer(row['Unique Visitors']),
+                'total_pageviews':
+                _parse_integer(row['Total Pageviews']),
+                'net_sales':
+                _parse_dollars(row['Net Sales']),
+                'donations':
+                _parse_dollars(row['Donations']),
+                'royalties':
+                _parse_dollars(row['Royalties']),
+                'enterprise_subscriptions':
+                _parse_dollars(row['Enterprise Subscriptions']),
+                'total_revenue':
+                _parse_dollars(row['Total Earnings']),
+                'profit':
+                _parse_dollars(row['Profit']),
             },)
     return rows
 
@@ -59,11 +66,12 @@ def _parse_htfp_csv(reader):
                 'month': _parse_month(row['Month']),
                 'unique_visitors': _parse_integer(row['Unique Visitors']),
                 'gumroad_earnings': _parse_dollars(row['Gumroad Earnings']),
-                'bfd_earnings': _parse_dollars(row['Blogging for Devs Earnings']),
-                'total_revenue': _parse_dollars(
-                    row['Total Earnings']),
+                'bfd_earnings': _parse_dollars(
+                    row['Blogging for Devs Earnings']),
+                'total_revenue': _parse_dollars(row['Total Earnings']),
             },)
     return rows
+
 
 def _parse_zestful_csv(reader):
     rows = []

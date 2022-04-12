@@ -7,7 +7,6 @@ import sys
 import csv_to_yaml
 import csv_to_markdown_table
 
-
 logger = logging.getLogger(__name__)
 
 
