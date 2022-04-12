@@ -3,16 +3,20 @@
 set -u
 set -e
 
+FINANCES_YAML="$(mktemp)"
+REVENUE_JSON="../mtlynch.io/static/data/project-finances.json"
+
 for project in "tinypilot" "htfp" "isitketo" "zestful"
 do
   CSV_URL_FILE="${project}-csv-url.txt"
-  CSV_URL=$(cat $CSV_URL_FILE)
+  CSV_URL="$(cat $CSV_URL_FILE)"
+  RAW_CSV="$(mktemp)"
+  wget -qO- "$CSV_URL" > "${RAW_CSV}"
+
   echo "### ${project}"
-  wget -qO- "$CSV_URL" | ./app/main.py 2> /tmp/print-table-output
+  cat "${RAW_CSV}" | ./app/main.py --project="${project}" 2> /dev/null
+
+  cat "${RAW_CSV}" | ./app/main.py --to-yaml --project="${project}" >> "${FINANCES_YAML}" 2> /dev/null
 done
 
-CSV_URL_FILE="totals-csv-url.txt"
-CSV_URL=$(cat $CSV_URL_FILE)
-readonly REVENUE_JSON="../mtlynch.io/static/data/project-revenue.json"
-echo "Saving updated revenue to ${REVENUE_JSON}"
-wget -qO- "$CSV_URL" | ./app/main.py --to-json > "${REVENUE_JSON}"
+yq -e -o=json "${FINANCES_YAML}" > "${REVENUE_JSON}"
