@@ -19,4 +19,4 @@ do
   cat "${RAW_CSV}" | ./app/main.py --to-yaml --project="${project}" >> "${FINANCES_YAML}" 2> /dev/null
 done
 
-yq -e -o=json "${FINANCES_YAML}" > "${REVENUE_JSON}"
+./yq -o j "${FINANCES_YAML}" > "${REVENUE_JSON}"
