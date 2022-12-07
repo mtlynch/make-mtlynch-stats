@@ -6,7 +6,7 @@ set -e
 FINANCES_YAML="$(mktemp)"
 REVENUE_JSON="../mtlynch.io/static/data/project-finances.json"
 
-for project in "tinypilot" "htfp" "isitketo" "zestful"
+for project in "tinypilot" # "htfp" "isitketo" "zestful"
 do
   CSV_URL_FILE="${project}-csv-url.txt"
   CSV_URL="$(cat $CSV_URL_FILE)"
