@@ -20,7 +20,6 @@ def _convert_tinypilot(a, b):
         _format_month(b['month']), 'Change'
     ])
     rows.append(_integer_row('Unique Visitors', 'unique_visitors', a, b))
-    rows.append(_integer_row('Total Pageviews', 'total_pageviews', a, b))
     rows.append(_dollar_amount_row('Sales Revenue', 'net_sales', a, b))
     if a['donations'] or b['donations']:
         rows.append(_dollar_amount_row('Donations', 'donations', a, b))
