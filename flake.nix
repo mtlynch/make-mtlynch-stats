@@ -38,9 +38,11 @@
         pkgs.mkShell {
           packages = [
             pythonEnv
+            pkgs.yq
           ];
           shellHook = ''
             python --version
+            yq --version
           '';
         };
     });
