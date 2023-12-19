@@ -9,11 +9,10 @@ Makes stats for the mtlynch.io blog.
 ## Installation
 
 ```bash
-mkdir -p ./venv
-virtualenv --python python3 ./venv
-. venv/bin/activate
-pip install --requirement requirements.txt
-pip install --requirement dev_requirements.txt
+python3 -m venv venv && \
+  . venv/bin/activate && \
+  pip install --requirement requirements.txt && \
+  pip install --requirement dev_requirements.txt
 ```
 
 ## Run
