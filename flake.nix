@@ -38,7 +38,7 @@
         pkgs.mkShell {
           packages = [
             pythonEnv
-            pkgs.yq
+            pkgs.yq-go
           ];
           shellHook = ''
             python --version
