@@ -14,9 +14,9 @@ do
   wget -qO- "$CSV_URL" > "${RAW_CSV}"
 
   echo "### ${project}"
-  cat "${RAW_CSV}" | ./app/main.py --project="${project}" 2> /dev/null
+  cat "${RAW_CSV}" | ./app/main.py --project="${project}"
 
-  cat "${RAW_CSV}" | ./app/main.py --to-yaml --project="${project}" >> "${FINANCES_YAML}" 2> /dev/null
+  cat "${RAW_CSV}" | ./app/main.py --to-yaml --project="${project}" >> "${FINANCES_YAML}"
 done
 
 yq --output-format json "${FINANCES_YAML}" > "${REVENUE_JSON}"
